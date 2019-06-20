@@ -23,7 +23,7 @@ pipeline {
   }
   post {
 	success {
-		recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+		recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']]
 	}
   }
 }

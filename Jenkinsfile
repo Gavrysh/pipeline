@@ -23,9 +23,9 @@ pipeline {
   }
   post {
 	success {
-		emailext body:,
+		emailext body: '',
 		recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-		subject:,
+		subject: '',
 		to: 'abc'
 	}
   }

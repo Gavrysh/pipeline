@@ -4,7 +4,6 @@ pipeline {
         label 'ubuntu'
     }
   }
-  
   stages {
     stage('Build') {
       steps {
@@ -22,7 +21,6 @@ pipeline {
       }
     }
   }
-  
   post {
 	failure {
 		emailext body: 'A Test EMail',

@@ -1,13 +1,23 @@
 pipeline {
   agent {
     node {
-        label 'ubuntu'
+      label 'ubuntu'
     }
+
   }
   stages {
     stage('Build') {
-      steps {
-        echo 'Build ...'
+      parallel {
+        stage('Build') {
+          steps {
+            echo 'Build ...'
+          }
+        }
+        stage('') {
+          steps {
+            sh 'sh \'./deploy.sh\''
+          }
+        }
       }
     }
     stage('Test') {
@@ -22,11 +32,10 @@ pipeline {
     }
   }
   post {
-	success {
-		emailext body: '',
-		recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-		subject: '',
-		to: 'abc'
-	}
+    success {
+      emailext(body: '', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: '', to: 'abc')
+
+    }
+
   }
 }
